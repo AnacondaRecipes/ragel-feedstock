@@ -1,0 +1,50 @@
+{% set name = "ragel" %}
+{% set version = "6.10" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://www.colm.net/files/ragel/ragel-{{ version }}.tar.gz
+  sha256: 5f156edb65d20b856d638dd9ee2dfb43285914d9aa2b6ec779dac0270cd56c3f
+  patches:
+    - patches/0001-Fix-undeclared-setiosflags-function.patch
+
+build:
+  number: 0
+  skip: true  # [win]
+
+requirements:
+  build:
+    - {{ stdlib('c') }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
+    - autoconf
+    - automake
+    - libtool
+
+test:
+  commands:
+    - ragel --version
+    - ragel --help
+
+about:
+  home: https://www.colm.net/open-source/ragel/
+  license: GPL-2.0-only
+  license_family: GPL
+  license_file: COPYING
+  summary: Ragel State Machine Compiler
+  description: |
+    Ragel compiles executable finite state machines from regular languages.
+    Ragel targets C, C++, Objective-C, D, Go, Java and Ruby.
+    Ragel state machines can not only recognize byte sequences as regular
+    expression machines do, but can also execute code at arbitrary points
+    in the recognition of a regular language.
+  dev_url: https://github.com/adrian-thurston/ragel
+  doc_url: https://www.colm.net/files/ragel/ragel-guide-6.10.pdf
+
+extra:
+  recipe-maintainers:
+    - AnacondaRecipes
