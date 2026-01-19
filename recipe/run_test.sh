@@ -28,7 +28,8 @@ EOF
 
 ragel -Cs testprog.rl
 
-eval "${CC} testprog.c -o testprog"
+# Use $CC if set, otherwise fall back to 'cc'
+eval "${CC:-cc} testprog.c -o testprog"
 
 OUTPUT=$(./testprog rttr)
 
