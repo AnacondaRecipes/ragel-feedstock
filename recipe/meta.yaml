@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://www.colm.net/files/ragel/ragel-{{ version }}.tar.gz
+  url: https://www.colm.net/files/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 5f156edb65d20b856d638dd9ee2dfb43285914d9aa2b6ec779dac0270cd56c3f
   patches:
     - patches/0001-Fix-undeclared-setiosflags-function.patch
