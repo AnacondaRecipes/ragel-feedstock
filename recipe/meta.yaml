@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://www.colm.net/files/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://github.com/adrian-thurston/{{ name }}/archive/refs/tags/{{ name }}-{{ version }}.tar.gz
   sha256: 084c35870a1e3c3a867ef559c888dba3f97ffe246ab364a14027577d5146094f
   patches:
     - patches/0001-Fix-undeclared-setiosflags-function.patch
