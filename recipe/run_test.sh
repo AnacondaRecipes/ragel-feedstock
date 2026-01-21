@@ -1,6 +1,13 @@
 #!/bin/bash
 set -ex
 
+# Check that the binary exists
+test -f $PREFIX/bin/ragel
+
+# Basic functionality tests
+ragel --version
+ragel --help
+
 cat > testprog.rl << EOF
 #include <stdio.h>
 #include <string.h>
@@ -28,7 +35,8 @@ EOF
 
 ragel -Cs testprog.rl
 
-eval "${CC} testprog.c -o testprog"
+# Use $CC if set, otherwise fall back to 'cc'
+eval "${CC:-cc} testprog.c -o testprog"
 
 OUTPUT=$(./testprog rttr)
 
